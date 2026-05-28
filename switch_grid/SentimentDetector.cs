@@ -69,11 +69,11 @@ namespace switch_grid
                 return "Tip: Avoid conducting banking tasks over public Wi-Fi access links without an encrypted VPN tunnel active.";
             }
 
-            // Universal default security tip fallback
+            // Universal fallback tip if no matching keywords are found
             return "Tip: Ensure your desktop operating updates and browser patches are installed immediately to shield against active system vulnerabilities.";
         }
 
-        // TASK 6 COMPLIANCE: Perfectly merges the response streams without requiring re-prompts
+        // Task 6 Compliance: Orchestrates and merges the prefix statement with a cybersecurity tip automatically
         public string ProcessUserMessage(string userInput)
         {
             Sentiment detectedSentiment = Detect(userInput);

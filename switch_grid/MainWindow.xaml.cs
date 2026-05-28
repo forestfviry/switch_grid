@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic; // TASK 8: Using professional generic collections
+using System.Collections.Generic; // Task 8 Requirement: Generic Collections
 using System.IO;
 using System.Media;
 using System.Text;
 using System.Windows;
-using System.Drawing; // Processes pixel data maps
+using System.Drawing;
 
 namespace switch_grid
 {
     public partial class MainWindow : Window
     {
-        // TASK 8: Replaced raw ArrayList models with safe strongly-typed modern Lists
+        // Task 8: Upgraded memory structures to modern, safe generic Lists
         private List<string> reply = new List<string>();
         private List<string> ignore = new List<string>();
 
@@ -25,13 +25,13 @@ namespace switch_grid
         {
             InitializeComponent();
 
-            // Temporary adapter mapping to pass generic lists to assignment architecture safely
+            // Temporary structural adapter to handle assignment legacy arrays safely
             ArrayList legacyReplyAdapter = new ArrayList();
             ArrayList legacyIgnoreAdapter = new ArrayList();
 
             respond bot = new respond(legacyReplyAdapter, legacyIgnoreAdapter);
 
-            // Cast data back into generic systems for type-safe processing optimization
+            // Port items into the strongly-typed collection lists
             foreach (var item in legacyReplyAdapter) reply.Add(item.ToString());
             foreach (var item in legacyIgnoreAdapter) ignore.Add(item.ToString());
 
@@ -43,6 +43,7 @@ namespace switch_grid
         {
             try
             {
+                // Multi-tier structural fallback checks to bypass folder layout states
                 string full_path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logo.jpg");
 
                 if (!File.Exists(full_path))
@@ -58,7 +59,7 @@ namespace switch_grid
                 {
                     using (Bitmap image = new Bitmap(full_path))
                     {
-                        // OPTIMIZATION: Height set to 140 to map perfectly to console proportions without vertical stretch
+                        // Aspect Ratio Calibration: Height changed to 140 to look crisp and clean in WPF
                         Bitmap resizedImage = new Bitmap(image, new System.Drawing.Size(210, 140));
                         StringBuilder asciiBuilder = new StringBuilder();
 
@@ -119,6 +120,10 @@ namespace switch_grid
                 MessageBox.Show("Welcome back, agent " + stored_username + "!");
                 username_grid.Visibility = Visibility.Hidden;
                 chats_grid.Visibility = Visibility.Visible;
+
+                // Set text box focus directly so the user can start typing without clicking
+                question.Focus();
+
                 chats_list.Items.Add("CyberGuard : Hello " + stored_username + "! Let's secure your perimeter.");
                 chats_list.Items.Add("CyberGuard : Ask me about: passwords, phishing, firewall, vpn, fraud, malware.");
                 chats_list.Items.Add("──────────────────────────────────────────");
@@ -148,6 +153,7 @@ namespace switch_grid
         {
             string lower_input = user_input.ToLower();
 
+            // Personal identity / Topic logging retention rules
             if (lower_input.Contains("i'm interested in") || lower_input.Contains("my favourite topic is"))
             {
                 string topic = lower_input.Contains("i'm interested in") ?
@@ -165,14 +171,13 @@ namespace switch_grid
                 return recall;
             }
 
-            // TASK 6 OPTIMIZATION: Call your internal class orchestrator to cleanly pipe compound tips
+            // Task 6 Optimization: Process sentiment and security tips smoothly via the direct engine class method
             Sentiment sentiment = sentiment_detector.Detect(lower_input);
             if (sentiment != Sentiment.Neutral)
             {
-                // Pull dynamic tip tracking logic straight from your automated class setup
                 string compoundResponse = sentiment_detector.ProcessUserMessage(user_input);
 
-                // Track keyword for subsequent "tell me more" follow-ups
+                // Preserve keyword trackers for downstream tracking flow tasks
                 if (lower_input.Contains("scam") || lower_input.Contains("fraud")) last_keyword = "fraud";
                 else if (lower_input.Contains("password")) last_keyword = "password";
                 else if (lower_input.Contains("phishing")) last_keyword = "phishing";
@@ -183,11 +188,12 @@ namespace switch_grid
                 return compoundResponse;
             }
 
-            // BUG FIX: Added .ToLower() to the input split loop to handle capitalized topics smoothly
+            // Keyword processing tracking
             string[] input_words = lower_input.Split(' ');
             foreach (string word in input_words)
             {
-                string cleaned_word = word.Trim().ToLower(); // Fixes upper/lower keyword mismatches completely
+                // Fixed Case-Insensitivity Bug: Forced string to lowercase directly during the split process
+                string cleaned_word = word.Trim().ToLower();
                 if (ignore.Contains(cleaned_word)) continue;
 
                 foreach (string answer in reply)
