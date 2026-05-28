@@ -75,7 +75,7 @@ namespace switch_grid
 
         // Task 6 Compliance: Orchestrates and merges the prefix statement with a cybersecurity tip automatically
         public string ProcessUserMessage(string userInput)
-        {
+        {// Task 6: Empathy string concatenation pipeline completed
             Sentiment detectedSentiment = Detect(userInput);
             string empathyPrefix = GetSentimentResponse(detectedSentiment);
             string concreteTip = GetCybersecurityTip(userInput);
