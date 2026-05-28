@@ -84,7 +84,7 @@ namespace switch_grid
                     ascii_logo_box.Text = "Error Matrix: 'logo.jpg' couldn't resolve from directory tree structure.";
                 }
             }
-            catch (Exception ex)
+            catch  (Exception ex)
             {
                 ascii_logo_box.Text = "System Fault processing image color frames: " + ex.Message;
             }
