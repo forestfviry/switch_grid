@@ -150,7 +150,7 @@ namespace switch_grid
         }
 
         private string get_response(string user_input)
-        {
+        {// Task 7: Fallback string handling unrecognised user inputs gracefully without crashes
             string lower_input = user_input.ToLower();
 
             // Personal identity / Topic logging retention rules
