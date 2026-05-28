@@ -77,7 +77,7 @@ namespace switch_grid
                         }
 
                         ascii_logo_box.Text = asciiBuilder.ToString();
-                    }
+                    }// Calibration check
                 }
                 else
                 {
