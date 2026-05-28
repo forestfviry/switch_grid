@@ -63,8 +63,7 @@
                 BorderBrush="#58A6FF"
                 BorderThickness="1"
                 Padding="10,0"
-                CaretBrush="#58A6FF"
-                Focusable="True"/>
+                CaretBrush="#58A6FF"/>
 
             <Button
                 Height="50"
@@ -77,7 +76,8 @@
                 FontFamily="Consolas"
                 FontWeight="Bold"
                 BorderThickness="0"
-                Cursor="Hand"/>
+                Cursor="Hand"
+                IsDefault="True"/>
         </Grid>
 
         <Grid x:Name="chats_grid" Visibility="Hidden" Background="#0D1117">
